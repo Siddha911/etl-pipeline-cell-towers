@@ -5,7 +5,7 @@ from pyspark.sql.functions import col
 
 @task.pyspark(conn_id='spark-local')
 def load_to_clickhouse(path, **kwargs):
-    """Функция создает подключение и загружает данные в ClickHouse"""
+    """Создаем подключение и загружаем данные в ClickHouse"""
     
     clickhouse_conn = ClickhouseHook.get_conn('clickhouse_connection')
 
