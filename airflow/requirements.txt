@@ -1,0 +1,5 @@
+clickhouse-driver
+airflow-clickhouse-plugin
+apache-airflow-providers-clickhouse
+apache-airflow-providers-apache-spark
+pyspark
