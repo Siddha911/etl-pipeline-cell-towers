@@ -32,22 +32,22 @@ extract_task = PythonOperator(
     task_id='extract',
     python_callable=download_and_extract,
     op_kwargs={'url': 'https://datasets.clickhouse.com/cell_towers.csv.xz', 
-               'path': '~/airflow_workspace/downloads/cell_towers.csv.xz'},
+               'path': '~/downloads/cell_towers.csv.xz'},
     dag=dag
 )
 
 transform_task = SparkSubmitOperator(
     name='transform',
-    application='~/airflow_workspace/airflow/plugins/filter_and_partition.py',
-    application_args=['~/airflow_workspace/downloads/cell_towers.csv.xz',
-                      '~/airflow_workspace/airflow/files'],
+    application='~/airflow/plugins/filter_and_partition.py',
+    application_args=['~/downloads/cell_towers.csv.xz',
+                      '~/airflow/files'],
     dag=dag
 )
 
 load_task = SparkSubmitOperator(
     name='load',
-    application='~/airflow_workspace/airflow/plugins/load_to_clickhouse.py',
-    application_args=['~/airflow_workspace/airflow/files'],
+    application='~/airflow/plugins/load_to_clickhouse.py',
+    application_args=['~/airflow/files'],
     dag=dag
 )
 
