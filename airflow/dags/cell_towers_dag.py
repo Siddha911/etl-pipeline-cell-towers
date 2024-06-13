@@ -6,7 +6,7 @@ import requests
 
 
 def download_and_extract(url, path, **kwargs):
-    """Функция для загрузки данных с использование библиотеки requests"""
+    """Загрузка данных с использование библиотеки requests"""
     
     response = requests.get(url, params={'downloadformat': 'csv.xz'})
     response.raise_for_status()
